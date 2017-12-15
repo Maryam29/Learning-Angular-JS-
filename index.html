@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang ="en-us" ng-app="myApp"> <!-- we're allowing ourselves custom attribute ng-app. Everything inside ithis object the  whole DOM inside this is now connected-->
+    <script src="https://code.angularjs.org/1.6.0-rc.2/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.6.0-rc.2/angular-messages.min.js"></script>
+    <script src="https://code.angularjs.org/1.6.0-rc.2/angular-route.min.js"></script>
+    <script src="https://code.angularjs.org/1.6.0-rc.2/angular-resource.min.js"></script>
+    <script src="app.js"></script>
+    <base href="/">
+    <head>
+     <title>Introduction to AngularJS</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta charset="UTF-8">
+
+        <!-- load bootstrap and fontawesome via CDN -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+        <style>
+            html, body
+            {
+                font-size: 1.1em;
+            }
+        </style>
+    </head>
+        <body>
+        <header>
+			<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">AngularJS</a>
+				</div>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#!/first"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="#!/second">Second</a></li>
+				</ul>
+			</div>
+			</nav>
+		</header>
+            <div class="container">
+                <div ng-view></div>
+            </div>
+            <div class="container">
+            <!-- Its gonna look for mainController inside myApp-->
+			<div ng-controller="mainController">
+                <h1>Hello {{name+".How are you"}}</h1>  <!-- It looks in the $scope object for its value --->
+                <form name="myForm">
+                    <input type="text" ng-model ="handle" name= "myField" required minlength="5"/>
+                    <div ng-messages="myForm.myField.$error">
+                        <div ng-message="required">You didn't enter any  value</div>
+                        <div ng-message="minlength" >The value entered is too short</div>
+                    </div>
+                    <h1>{{TextBoxname}} skype handle is skype/{{lowercasehandle(handle)}}</h1>
+                    <p>{{person.address}}</p>
+                </form>
+            </div>
+            <div ng-controller="secondController">
+               <h1>Its the second Controller</h1>
+                <input type="text" ng-model ="handle" name= "myField"/>
+                <div class= "alert" ng-class ="{'alert-warning':handle.length < characters,'alert-danger':handle.length > characters}"> 
+                    <div class= "alert" ng-show="handle.length < characters"> Must be 5 characters</div>
+                    <div class= "alert" ng-show="handle.length > characters"> You Exceeded 5 characters</div>
+                 </div>
+                <!--<div class= "alert" ng-if="handle.length > characters"> Mustnot be more than 5 characters</div>-->
+                <h3>Rules</h3>
+                <ul>
+                    <li ng-repeat = "rule in rules">{{rule.rulename}}</li>
+                </ul>
+                <input type="button" value="Click me" ng-click="alertClick()"/>
+                <div ng-cloak>{{handle}}</div><!-- Sometimes when internet is slow you'll see curly braces, interpolation and then Javascript kicks in and takes over and shows this properly so Angular introduced ng-cloak, which hides this element until AngularJS has worked on it-->
+                <!--<h3>Rules</h3>
+                <ul>
+                    <li ng-repeat = "rule in rules">{{rule.rulename}}</li>
+                </ul>-->
+                <h3>Address</h3>
+                <!--{{result}}-->
+                <ul>
+                    <li ng-repeat = "rule in result.data.results[0].address_components">{{rule}}</li>
+                </ul>
+            </div>
+
+		</div> 
+    </body>
+</html>

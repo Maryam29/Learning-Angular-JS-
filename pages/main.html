@@ -1,0 +1,12 @@
+<h1>This is main</h1>
+<h3>Scope Value: {{TextBoxname}}  Handle: {{handle}}</h3>
+<h3>Person {{person.name}}  Handle: {{person.address}} Occupation:{{occupation}}</h3>
+<!--TextBoxName<input type="text" ng-model="TextBoxname" />
+Handle<input type="text" ng-model="handle" />-->
+
+ <div class="container">
+     <search-result ng-repeat="person in people" person-object="person" formatted-address-function="formattedAddress(aperson)">
+     ** search results may not be valid
+     </search-result>
+</div>
+<!--search-result directive is part or used inside main.html template, hence the search-result has access to scope variables(model) of the corresponding controller-->

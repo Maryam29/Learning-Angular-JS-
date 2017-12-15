@@ -1,0 +1,89 @@
+AngularJS is a Javascript MVC framework created by Google to build properly architectured and maintenable web applications.
+
+Example in 
+var current = 0
+$("#btnstep1").click(function(){
+$(#step1).hide;
+current = 1;
+})
+
+The complexity of managing both the DOM, HTML and of the logic, the variables, the data and we have to do all of that manually. We're doin lot of management ourseves and after a while, this gets really hairy, get really difficult to deal with and it can become just overwhelming. wouldn't it be awesome if we update one sie and other side s automatically updated, update the HTML and JAvascript updates, and vice-versa.
+Angularjs is a JavaScript framework that makes the life of the developer easier and your project manager happier. The reason why is explained in-depth here.
+
+JavaScript?!
+
+These day's it's unthinkable that all actions on a webpage should go back and forth to the web server. Nowadays all web pages extensively use JavaScript which cause several advantages:
+
+More interactive and responsive UI
+Save bandwidth
+Save CPU consumption on the web server
+These advantages have several consequences. A more responsive UI and faster loading times mean a better google ranking. Less bandwidth and CPU consumption mean cheaper hosting. The hard part of all this beauty is that it takes more time to code, especially if you want a graceful degradation. If your client doesn't have JavaScript enabled, you still want your website to be functional. Now this is where several frameworks come in to make the life of the developer easier.
+
+What is a MVW framework?
+
+The MVC and MVVM Patterns
+
+The MVC pattern dates back to the 1980s and early graphical UIs. The goal of MVC is to factor the code into three separate responsibilities, shown in Figure 7. Here’s what they do:
+
+The model represents the domain data and business logic.
+The view displays the model.
+The controller receives user input and updates the model.
+
+A more recent variant of MVC is the MVVM pattern (see Figure 8). In MVVM:
+
+The model still represents the domain data.
+The view model is an abstract representation of the view.
+The view displays the view model and sends user input to the view model.
+In a JavaScript MVVM framework, the view is markup and the view model is code.
+
+In this blog the focus lies on a particular MVW framework namely Angularjs. The abbreviation stands for 'Model - View - Whatever'. You might be asking yourself what are these frameworks? Well there are many different JavaScript frameworks available in this genre, all invented for the same purpose. They all try to separate the presentation logic from the business logic where JavaScript holds the model and logic, and html the presentation layer.
+For all of you who have forgotten the benefits of separating logic and presentation, here a quick overview:
+
+You can change the model without changing the view and vice-versa
+Unit testing is easy
+These are the core benefits of using such a framework. By separating presentation and business logic changes to the code are easier to implement and take less time. Another benefit is that code can be reused from a controller thus saving more time. Angularjs makes the code also shorter in comparison to other frameworks, which improves code stability. Less code means minor potential for bugs.
+
+Dependency Injection
+Dependency Injection (DI) is a software design pattern that deals with how components get hold of their dependencies.
+
+The AngularJS injector subsystem is in charge of creating components, resolving their dependencies, and providing them to other components as requested.
+Components such as services, directives, filters, and animations are defined by an injectable factory method or constructor function. These components can be injected with "service" and "value" components as dependencies.
+The Scope Service
+Its a big part of the things that binds the model to the view. Scope is an object from Scope Service and it involves dependency injection.
+In the construction function we use $scope, angular JS file has already defined scope object and it injects it in the constructor function. 
+Scope defines the data that will go back and forth between view and Model.
+
+To use any module.
+1.) refer them inside script tag. 2.) add them to dependencies array in your module 3.) USe them inside the controller it is defined in.
+
+{{name}} When we view PageSource we see that {{name}} is as it is present which means it was downloaded, AngularJS ran its code and then updated the values in the memory of the browser.
+
+Directive: An instruction to AngularJS to manipulate a piece of the DOM.. This could be 'Add a class','Hide this','create this' etc.
+Wacthers and Digest Loop binds models and views. AngularJS is already listening to the the events  such as keypress, mouseover etc. and keeping the watch watch of all the variables used inside a view whether it has changed or not keeping a list of old values and new values of variables. 
+
+Digest loop periodically checks for change in values. its a loop angular has written. when you enter a digest loop it asks a question has something changed? comapres old value to new value and if anything has changed then it runs a second loop to check whether change has affected something else. This is happening between Model-View- Whatever. We can add our own watch and test its old and new value.
+
+CAUTION:
+It watches everything happening within the AngularJS Context. Suppose a scope var changes its value in any Javascript function nothing to do with AngularJS then it wont keep a watch on it and wont run the digest loop. If you wont it to be watched then add the code in $scope.$apply funct. which will put the item in watchlist and will be checked for changes
+
+Can Check the directives provided by Angular JS in angularjs.org->API reference-> directive section
+
+Sinlge Page Applications: perceived speed is also higher as ther's no blinking, also not the whole page is downloading, just the extra data
+
+Singletons: single copy of objects. Services are singletons. Two controllers injecting same sevices are single copy not diferent instances except for Scope. $scope is the child scope inheriting root scope having all the features from root scope. Single Page Applications main base is singleton services. 
+When we create new service and that service is used by different controllers. When we navigate across different pages I have all the variables and content and values that I had when I started, share content across pages. Also we can use services to encapsulate functionality that I use across controllers. This all is possible becoz its singleton. When refreshed the page it comes back to the starting point, it doesn't persist
+
+factories are similar to services.
+
+Normalization: AngularJS normalizes navbar-brand variable name to navbarBrand. This is done for using variables as templates later. navbar-brand is invalid variable name it normalizes it.
+
+Directives: AngularJS lets you extend HTML with new attributes called Directives. It has a set of built-in directives which offers functionality to your applications, also lets us define your own directives.
+AngularJS directives are extended HTML attributes with the prefix ng-.
+
+The ng-app directive initializes an AngularJS application. The ng-init directive initializes application data. The ng-model directive binds the value of HTML controls (input, select, textarea) to application data.
+
+Directives have all access to parent scope and also going to be reused, which might be dangerous as it might change some variables in the model. which might cause parent page to be affected. therefore we isolate the directive. We add scope attribute and create directives own model, Hence directive cannot be affected or be affected whats happening in the parent page. Just like creating a wall and it has no idea about parent page scope variables. 
+Poking Hole in t wall created by directive. Its done via attributes. Main.html which instantiate the directive has access to scope variables within its conrtoller so via this page we pass the model data to the directive,myapp.directive(), where scope normalizes the attribue and specifies the type of variable its expecting. then this variable in turn will be available to template.
+
+same controller used by two pages in Single Page application doesn't share variables. Changes in one is not reflected in another view, they have their own different copy.
+When a directive is declared with template (or templateUrl) and replace mode on, the template must have exactly one root element. That is, the text of the template property or the content referenced by the templateUrl must be contained within a single html element. 

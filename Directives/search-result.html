@@ -1,0 +1,23 @@
+<div>
+    <small><ng-transclude></ng-transclude></small>
+<a href="#" class="list-group-item">
+    <!--<h4 class="list-group-item-heading">{{personObject.name}}</h4>
+    <p class="list-group-item-text">{{personObject.address}}</p>-->
+    <h4 class="list-group-item-heading">{{personObject.name}}</h4>
+   <p>{{formattedAddressFunction({aperson:personObject})}}</p> <!-- WE PASS THE OBJECT MAP-->
+</a>
+</div>
+<!--<a href="#" class="list-group-item">
+    <h4 class="list-group-item-heading">{{person.address}}</h4>
+    <p class="list-group-item-text">{{PersonID}}</p>
+</a>-->
+<!--search-result directive is part or used inside main.html template, hence the search-result has access to scope variables(model) of the corresponding controller -->
+<!--Directives have all access to parent scope and also going to be reused, which might be dangerous as it might change some variables in the model. which might cause parent page to be affected. therefore we isolate the directive. We add scope attribute and create directives own model, Hence directive cannot be affected or be affected whats happening in the parent page-->
+
+<!--
+<a href="#" class="list-group-item">
+    <h4 class="list-group-item-heading">{{TextBoxname}}</h4>
+    <p class="list-group-item-text">{{handle}}</p>
+</a>
+-->
+
