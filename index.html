@@ -78,5 +78,23 @@
             </div>
 
 		</div> 
+            
+            <div class="container">
+                <div ng-controller="parent1Controller">
+                    {{message}}
+                    <div ng-controller="child1Controller">
+                        Child's Message : {{childvm.message}}<br>
+                        Old way to access Parent's Message : {{$parent.oldmessage}}<br>
+                        New way to access Parent's Message : {{parentvm.message}}
+                    </div>
+                </div>
+                <div ng-controller="parent2Controller as parent2">
+                    This is using Controller as {{parent2.message}}<br>
+                    <div ng-controller="child2Controller as child2">
+                       {{child2.message}}<br>
+                    Accessing parents message inside child: {{parent2.message}}
+                    </div>
+                </div>
+            </div>
     </body>
 </html>

@@ -147,6 +147,23 @@ var searchPeople = function(firstName, height, age, occupation) {
 //searchPeople(1,2,3,4)
 //console.log(angular.injector().annotate(searchPeople)); //["firstName", "height", "age", "occupation"]
 
+
+myApp.controller("parent1Controller",function($scope){
+    $scope.oldmessage = "This is parent1 message by old way"
+    $scope.parentvm = {}
+    $scope.parentvm.message = "This is parent1 message by new way";
+})
+myApp.controller("child1Controller",function($scope){
+    $scope.childvm = {}
+    $scope.childvm.message = "This is child1 "
+})
+myApp.controller("parent2Controller",function($scope){
+    this.message = "This is parent2";
+})
+myApp.controller("child2Controller",function($scope){
+    this.message = "This is child2";
+})
+
 myApp.directive("searchResult", function(){
     return {
         restrict:"AECM",

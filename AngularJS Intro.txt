@@ -86,4 +86,9 @@ Directives have all access to parent scope and also going to be reused, which mi
 Poking Hole in t wall created by directive. Its done via attributes. Main.html which instantiate the directive has access to scope variables within its conrtoller so via this page we pass the model data to the directive,myapp.directive(), where scope normalizes the attribue and specifies the type of variable its expecting. then this variable in turn will be available to template.
 
 same controller used by two pages in Single Page application doesn't share variables. Changes in one is not reflected in another view, they have their own different copy.
-When a directive is declared with template (or templateUrl) and replace mode on, the template must have exactly one root element. That is, the text of the template property or the content referenced by the templateUrl must be contained within a single html element. 
+When a directive is declared with template (or templateUrl) and replace mode on, the template must have exactly one root element. That is, the text of the template property or the content referenced by the templateUrl must be contained within a single html element.
+In order to make code and functions reusable put them inside services and objects, so that it can be used by other controllers and it will be easy to keep track of them in large applications.
+Controller as introduced in Angular 1.2 used as alternative to $scope service. you can define variable inside controller without using scope and they will get two way bound with those variables. Inside view you can access them using 
+<div ng-controller="mainController as main">
+{{main.message}}
+</div>
